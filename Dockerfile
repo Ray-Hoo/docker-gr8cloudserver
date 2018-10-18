@@ -28,7 +28,7 @@ RUN mkdir -p /srv/gr8cloudserver/data \
     && unrar e ${DOWNLOAD_URL##*/} -p${RAR_PWD} \
     && rm -f ${DOWNLOAD_URL##*/} \
     && adduser -h /srv/gr8cloudserver/data -s /sbin/nologin -D gr8ftp \
-    && chown -R gr8ftp:gr8ftp /srv/gr8cloudserver/data
+    && chown -R gr8ftp:gr8ftp /srv/gr8cloudserver/data \
     && chmod 755 /docker-entrypoint.bash
 
 RUN mkdir -p /etc/ssl/private \
