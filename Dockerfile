@@ -28,8 +28,7 @@ RUN mkdir -p /srv/gr8cloudserver/data \
     && unrar e ${DOWNLOAD_URL##*/} -p${RAR_PWD} \
     && rm -f ${DOWNLOAD_URL##*/} \
     && adduser -h /srv/gr8cloudserver/data -s /sbin/nologin -D gr8ftp \
-    && chown -R gr8ftp:gr8ftp /srv/gr8cloudserver/data \
-    && chmod 755 /docker-entrypoint.bash
+    && chown -R gr8ftp:gr8ftp /srv/gr8cloudserver/data
 
 RUN mkdir -p /etc/ssl/private \
     && echo 'gr8ftp' >> /etc/vsftpd/vsftpd.allowed_users
@@ -38,6 +37,8 @@ VOLUME /srv/gr8cloudserver/data
 COPY docker-entrypoint.bash /
 COPY supervisord.conf /etc/
 COPY vsftpd.conf /etc/vsftpd/
+
+RUN chmod 755 /docker-entrypoint.bash
 
 EXPOSE 684/tcp 20/tcp 21/tcp 34000-34010/tcp
 
