@@ -8,7 +8,7 @@ wget http://www.gr8bit.ru/software/gr8cloudserver/default-gr8cloud-volimg.rar -O
 echo ""
 
 if [ -z ${FTP_PWD} ]; then
-  FTP_PWD=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-8};echo;)
+  FTP_PWD=$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c 8)
   echo "Generated password for user 'gr8ftp': ${FTP_PWD}"
 fi
 echo "gr8ftp:${FTP_PWD}" | /usr/sbin/chpasswd
