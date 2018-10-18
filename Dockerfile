@@ -29,6 +29,7 @@ RUN mkdir -p /srv/gr8cloudserver/data \
     && rm -f ${DOWNLOAD_URL##*/} \
     && adduser -h /srv/gr8cloudserver/data -s /sbin/nologin -D gr8ftp \
     && chown -R gr8ftp:gr8ftp /srv/gr8cloudserver/data
+    && chmod 755 /docker-entrypoint.bash
 
 RUN mkdir -p /etc/ssl/private \
     && echo 'gr8ftp' >> /etc/vsftpd/vsftpd.allowed_users
