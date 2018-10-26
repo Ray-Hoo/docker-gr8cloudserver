@@ -38,8 +38,6 @@ COPY docker-entrypoint.bash /
 COPY supervisord.conf /etc/
 COPY vsftpd.conf /etc/vsftpd/
 
-RUN chmod 755 /docker-entrypoint.bash
-
 EXPOSE 684/tcp 20/tcp 21/tcp 34000-34010/tcp
 
 ENTRYPOINT ["/docker-entrypoint.bash"]
